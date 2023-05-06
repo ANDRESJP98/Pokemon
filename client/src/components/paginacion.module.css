@@ -1,0 +1,37 @@
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+  }
+  
+  .pageItem {
+    margin: 0 1px;
+    border: 1px solid #000;
+    border-radius: 2px;
+  padding: 5px;
+  width: 40px;
+  background-color:black;
+  }
+  .pageItem:hover {
+    background-color: rgb(219, 219, 219);
+  }
+  .pageLink {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: medium;
+    color:white;
+    text-decoration: none;
+  }
+  
+  .pageLink:hover {
+    color:white;
+  }
+  
+  
+  
+  
+  
+  
+  

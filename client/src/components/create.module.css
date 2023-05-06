@@ -1,0 +1,170 @@
+.totalImg{
+  background-image: url("https://img.freepik.com/vector-premium/fondo-rayos-sol-azul-comico_93083-73.jpg?w=1060");
+    background-position-x:right ;
+    background-repeat: repeat;
+    background-size:2700px 720px;
+
+  }
+  .sameSpot{
+    position: sticky;
+      top: 0;
+      padding: 5px;
+    z-index: 1;
+  }
+  .img{
+    position: relative;
+    top:0px; right: 100px;
+    }
+.button{
+  border:2px solid black;
+  width: 130px;height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  font-size:medium;
+  position: relative;
+  bottom:150px; right: 350px;
+  font-weight: 700;
+  background-color: black;
+  color:white
+}
+.text{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:x-large;
+  font-weight: 800;
+  position: relative;
+  bottom:30px; left:200px;
+  color:black
+}
+
+.text2{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:medium;
+  font-weight: 600;
+}
+.text3{
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:small;
+  font-weight: 300;
+  position: relative;
+  bottom:40px; left:200px;
+  color:black
+}
+.input{
+  border:1px solid black;
+  width: 300px; height: 30px;
+  border-radius: 10px;
+  position: relative;
+  bottom:390px; left: 200px;
+}
+.input2{
+  border:1px solid black;
+  width: 300px; height: 30px;
+  border-radius: 10px;
+  position: relative;
+  bottom:180px;left: 200px;
+}
+.placeholder {
+  position: relative;
+  transform: translate(-50%, -50%);
+}
+
+.position{
+  position: relative;
+  bottom:380px; left: 200px;
+}
+.bar{
+  width: 250px;
+}
+.positionImg{
+  position: relative;
+  bottom:200px;right: 100px;
+}
+.image{
+  display: flex;
+  position: relative;
+  top:150px; right: 200px;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+.error1{
+  position: relative;
+  bottom:405px; left: 650px;
+  color: red;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: medium;
+  font-weight: 400;
+  text-align: left;
+}
+.error2{
+  position: relative;
+  bottom:400px; left: 650px;
+  color: red;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: medium;
+  font-weight: 400;
+  text-align: left;
+}
+.error3{
+  position: relative;
+  bottom:390px; left: 650px;
+  color: red;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: medium;
+  font-weight: 400;
+  text-align: left;
+}
+.button2{
+  border:2px solid black;
+  width: 150px;height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  font-size:medium;
+  position: relative;
+  bottom: 370px; left: 200px;
+  font-weight: 700;
+  background-color: black;
+  color:white
+}
+.types{
+  display: flex;
+  position: relative;
+  bottom:370px; left:200px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+.distance{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 200;
+  font-size: large;
+  position: relative;
+  bottom:15px; 
+}
+.buttonX{
+  border: 1px solid black;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  position: relative;
+  top:18px;left:3px;
+  background-color: white;
+}
+.imagePosition{
+position: relative;
+bottom:200px;left:100px
+}
+.gif{
+  position: relative;
+  left: 150px;bottom: 450px;
+}

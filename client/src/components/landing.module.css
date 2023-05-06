@@ -1,0 +1,36 @@
+.image{
+    background-image: url("https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/hc_1440x810/public/media/image/2022/01/pokemon-2576649.jpg?itok=sEUCUgMq");
+    background-size: cover;
+    background-position-y:center  ;
+    background-position-x:center  ;
+    height: 552px;
+  }
+
+.button{
+border:3px solid black;
+border-radius: 75px;
+width:150px;
+height:150px;
+background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzW63kwNh9M6MNqBWPHayvbjga8MSsdktHqw&usqp=CAU");
+  background-repeat: no-repeat;
+  background-size:262px 175px;
+  background-position-x:center;
+  background-position-y:center;
+font-size: larger;
+font-weight: 800;
+position: relative;
+top:180px; right: 20px;
+color:white;
+}
+.text{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size:xx-large;
+  font-weight:bolder;
+  position: relative;
+  top:200px; right: 20px;
+  color:white;
+  text-shadow: 3px 3px 0 #000,
+               -3px -3px 0 #000,
+               3px -3px 0 #000,
+               -3px 3px 0 #000;
+  }

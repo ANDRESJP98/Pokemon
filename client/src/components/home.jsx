@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons } from "../actions/actions";
+import { getPokemons, orderByName, orderByAttack, filterPokemonsByTypes, filterCreated } from "../actions/actions";
 import Card from "./Card";
 import Paginacion from "./paginado";
 import { Link } from "react-router-dom";
 import SearchBar from "./searchBar";
+import style from './home.module.css'
 
 export default function Home(){
     const dispatch =useDispatch();
     const allPokemons = useSelector(state=>state.pokemons)
-    //const [order,setOrden]=useState('')
+    const [order,setOrden]=useState('')
     const [currentPage, setCurrentPage]=useState(1)
     const [pokemonsPerPage, setpokemonsPerPage]=useState(12)
     const indexOfLastVideogame=currentPage * pokemonsPerPage
@@ -27,77 +28,116 @@ export default function Home(){
         e.preventDefault();
         dispatch(getPokemons())
     };
-    /*const handleSort =(e)=>{
+    const handleSort =(e)=>{
         e.preventDefault();
         dispatch(orderByName(e.target.value))
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`)
     };
-    const handleFilterGenres=(e)=>{
-        dispatch(filterVideogamesByGenres(e.target.value))
+    const handleSortAttack =(e)=>{
+        e.preventDefault();
+        dispatch(orderByAttack(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    };
+    const handleFilterTypes=(e)=>{
+        e.preventDefault();
+        dispatch(filterPokemonsByTypes(e.target.value))
     };
     const handleFilterCreated=(e)=>{
+        e.preventDefault();
         dispatch(filterCreated(e.target.value))
-    };*/
+    };
+    
     return (
-        <div>
-        <Link to='/pokemon'>Add pokemons</Link>
+        <div className={style.container1}>
+        <div className={style.columnsL}>
+            <div className={style.sameSpot}>
         <div >
-        <h1>Videogames</h1>
-        <div>
-        <button onClick={e=>{handleClick(e)}}>Back to pokemons</button>
+        <Link to='/pokemon'><button className={style.button1}>Add pokemons</button></Link>
         </div>
-        <select /*</div>onChange={e=>handleSort(e)}*/>
+        <div>
+        <button className={style.button2} onClick={e=>{handleClick(e)}}>Clear filters</button>
+        </div>
+        <div  >
+        <select onChange={e=>handleSort(e)} className={style.order}>
+            <option>---</option>
             <option value="asc" >A-Z</option>
             <option value="desc">Z-A</option>
         </select>
-        <select >
-            <option value='All'>TODOS</option>
-            <option value="desc rating">+ Valorada</option>
-            <option value="asc rating">- Valorada</option>
+        <select onChange={e=>handleSortAttack(e)} className={style.order}>
+            <option>---</option>
+            <option value="asc attack">-Attack</option>
+            <option value="desc attack">+ Attack</option>
         </select>
-        <select /*onChange={e=>handleFilterCreated(e)}*/>
-            <option value='All'>TODOS</option>
-            <option value="created">Creados</option>
-            <option value="api">Existentes</option>
+        </div>
+        <div >
+        <select onChange={e=>handleFilterCreated(e)} className={style.filter}>
+            <option value='All'>---</option>
+            <option value="created">Created</option>
+            <option value="api">From Api</option>
         </select>
-        <select /*onChange={e=>handleFilterGenres(e)}*/>
-            <option value="All">TODOS</option>
-            <option value="Action">Action</option>
-            <option value="Indie">Indie</option>
-            <option value="Adventure">Adventure</option>
-            <option value="RPG">RPG</option>
-            <option value="Strategy">Strategy</option>
-            <option value="Shooter">Shooter</option>
-            <option value="Casual">Casual</option>
-            <option value="Simulation">Simulation</option>
-            <option value="Puzzle">Puzzle</option>
-            <option value="Arcade">Arcade</option>
-            <option value="Platformer">Platformer</option>
-            <option value="Racing">Racing</option>
-            <option value="Massively Multiplayer">Massively Multiplayer</option>
-            <option value="Sports">Sports</option>
-            <option value="Fighting">Fighting</option>
-            <option value="Family">Family</option>
-            <option value="Board Games">Board Games</option>
-            <option value="Educational">Educational</option>
-            <option value="Card">Card</option>
+        <select onChange={e=>handleFilterTypes(e)} className={style.filter}>
+            <option value='All'>---</option>
+            <option value="normal">normal</option>
+            <option value="fighting">fighting</option>
+            <option value="flying">flying</option>
+            <option value="poison">poison</option>
+            <option value="ground">ground</option>
+            <option value="rock">rock</option>
+            <option value="bug">bug</option>
+            <option value="ghost">ghost</option>
+            <option value="steel">steel</option>
+            <option value="fire">fire</option>
+            <option value="water">water</option>
+            <option value="grass">grass</option>
+            <option value="electric">electric</option>
+            <option value="psychic">psychic</option>
+            <option value="ice">ice</option>
+            <option value="dragon">dragon</option>
+            <option value="dark">dark</option>
+            <option value="fairy">fairy</option>
+            <option value="unknown">unknown</option>
+            <option value="shadow">shadow</option>
         </select>
+        </div>
+        <div >
         <SearchBar/>
+        </div>
+        <div>
+            <img className={style.gif} src="https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/lucario.gif"
+            width="150px" height="300px"/>
+        </div>
+        </div>
+        </div>
+        <div className={style.totalImg}>
+        <div className={style.columnsf}>
+         <img src="https://1000marcas.net/wp-content/uploads/2020/01/Logo-Pokemon.png" alt="img not found"
+            width="335px" height="208px" className={style.img}/>
         <Paginacion pokemonsPerPage={pokemonsPerPage}
         allPokemons={allPokemons.length}
-        paginado ={paginado}/>
-            {currentPokemons?.map((pok)=>{
+        paginado ={paginado}
+        /> 
+        </div> 
+        <div className={style.columnsR}>
+            {
+            currentPokemons.length>0?
+            currentPokemons.map((pok)=>{
                 return (
-                <div >
-                <Link to={"/home/" + pok.id}>
-                <Card name={pok.name}  types={pok.genres} key={pok.id}/>
-                </Link>
+                <div className={style.cardContainer} >
+                <Card name={pok.name} Types={pok.Types} image={pok.img?pok.img:pok.image} id={pok.id} key={pok.id}/> 
                 </div>
                 )
-            })}
+            }):<div className={style.img2}>
+            <img  src="https://media.tenor.com/74l5y1hUdtwAAAAj/pokemon.gif"
+            width="250px" height="250px" />
+            <p>Loading...</p>
+           </div>
+            }
         </div>
         </div>
+        </div>
+
     )
 
 }

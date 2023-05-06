@@ -5,30 +5,79 @@ const createPokemon = async (name, image, life,
     attack, defense, speed, height, weight, created)=>
         await Pokemon.create({name, image, life, 
             attack, defense, speed, height, weight, created});
-
+              
 const getAllpokemons = async ()=>{
-    let id=1
-    const infoApi=await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-    const pokemonsApi=[infoApi.data];
-    const pokemonsObj=pokemonsApi.map(elem=>{
-        return {
-            id:id,
-            name:elem.name,
-            life:elem.stats[0].base_stat,
-            attack:elem.stats[1].base_stat,
-            defense:elem.stats[2].base_stat,
-            speed:elem.stats[5].base_stat,
-            height:elem.height,
-            weight:elem.weight,
-            types:elem.types.map(elem=>{
-                return {
-                    type:elem.type.name
-                }
-            })
-        }
-    })
-   
-    const dbVideogames= await Pokemon.findAll({
+    try {
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon');
+        const pokemons = response.data.results;
+        const pokemonData = await Promise.all(pokemons.map(async (pokemon) => {
+          const res = await axios.get(pokemon.url);
+          return {
+            id: res.data.id,
+            name: res.data.name,
+            image: res.data.sprites.other.dream_world.front_default,
+            life: res.data.stats[0].base_stat,
+            attack: res.data.stats[1].base_stat,
+            defense: res.data.stats[2].base_stat,
+            speed:res.data.stats[5].base_stat,
+            height:res.data.height, 
+            weight:res.data.weight, 
+            Types:res.data.types.map(elem=>{return {name:elem.type.name}})
+          }
+        }))
+        const response2 = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=20&limit=20');
+        const pokemons2 = response2.data.results;
+        const pokemonData2 = await Promise.all(pokemons2.map(async (pokemon) => {
+          const res = await axios.get(pokemon.url);
+          return {
+            id: res.data.id,
+            name: res.data.name,
+            image: res.data.sprites.other.dream_world.front_default,
+            life: res.data.stats[0].base_stat,
+            attack: res.data.stats[1].base_stat,
+            defense: res.data.stats[2].base_stat,
+            speed:res.data.stats[5].base_stat,
+            height:res.data.height, 
+            weight:res.data.weight, 
+            Types:res.data.types.map(elem=>{return {name:elem.type.name}})
+          }
+        }))
+        const response3 = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=40&limit=20');
+        const pokemons3 = response3.data.results;
+        const pokemonData3 = await Promise.all(pokemons3.map(async (pokemon) => {
+          const res = await axios.get(pokemon.url);
+          return {
+            id: res.data.id,
+            name: res.data.name,
+            image: res.data.sprites.other.dream_world.front_default,
+            life: res.data.stats[0].base_stat,
+            attack: res.data.stats[1].base_stat,
+            defense: res.data.stats[2].base_stat,
+            speed:res.data.stats[5].base_stat,
+            height:res.data.height, 
+            weight:res.data.weight, 
+            Types:res.data.types.map(elem=>{return {name:elem.type.name}})
+          }
+        }))
+        const response4 = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=60&limit=20');
+        const pokemons4 = response4.data.results;
+        const pokemonData4 = await Promise.all(pokemons4.map(async (pokemon) => {
+          const res = await axios.get(pokemon.url);
+          return {
+            id: res.data.id,
+            name: res.data.name,
+            image: res.data.sprites.other.dream_world.front_default,
+            life: res.data.stats[0].base_stat,
+            attack: res.data.stats[1].base_stat,
+            defense: res.data.stats[2].base_stat,
+            speed:res.data.stats[5].base_stat,
+            height:res.data.height, 
+            weight:res.data.weight, 
+            Types:res.data.types.map(elem=>{return {name:elem.type.name}})
+          }
+        }))
+    
+    const dbPokemons= await Pokemon.findAll({
         include:{
             model:Type,
             attributes:['name'],
@@ -38,8 +87,12 @@ const getAllpokemons = async ()=>{
             }
         });
      
-    return [...pokemonsObj,...dbVideogames];
+ return [...dbPokemons,...pokemonData,...pokemonData2,...pokemonData3,...pokemonData4];
+    }catch(error){
+        console.log(error)
+    }
 }
+
 
 
 module.exports ={ getAllpokemons , createPokemon };

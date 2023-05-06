@@ -17,34 +17,44 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate:{
+        isUrl:true
+      }
     },
     life: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue:5
     },
     attack: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue:5
     },
     defense: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue:5
     },
     speed: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue:5
     },
     height: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue:1
     },
     weight: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue:1
     },
     created:{
-          type:DataTypes.BOOLEAN,
-      defaultValue:true
+      type:DataTypes.BOOLEAN,
+      defaultValue:true, 
+      allowNull:true
     }
   }, {timestamps: false});
 };
