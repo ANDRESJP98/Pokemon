@@ -42,6 +42,36 @@ export const orderByAttack=(payload)=>{
         payload
     }
 };
+export const orderByWeight=(payload)=>{
+    return {
+        type:"ORDER_BY_WEIGHT",
+        payload
+    }
+};
+export const orderByHeight=(payload)=>{
+    return {
+        type:"ORDER_BY_HEIGHT",
+        payload
+    }
+};
+export const orderBySpeed=(payload)=>{
+    return {
+        type:"ORDER_BY_SPEED",
+        payload
+    }
+};
+export const orderByLife=(payload)=>{
+    return {
+        type:"ORDER_BY_LIFE",
+        payload
+    }
+};
+export const orderByDefense=(payload)=>{
+    return {
+        type:"ORDER_BY_DEFENSE",
+        payload
+    }
+};
 export const filterPokemonsByTypes=(payload)=>{
 return {
     type:"FILTER_BY_TYPES",

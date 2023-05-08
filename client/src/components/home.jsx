@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, orderByName, orderByAttack, filterPokemonsByTypes, filterCreated } from "../actions/actions";
+import { getPokemons, orderByWeight,orderByHeight, orderBySpeed, orderByLife, orderByDefense, orderByName, orderByAttack, filterPokemonsByTypes, filterCreated } from "../actions/actions";
 import Card from "./Card";
 import Paginacion from "./paginado";
 import { Link } from "react-router-dom";
@@ -13,9 +13,9 @@ export default function Home(){
     const [order,setOrden]=useState('')
     const [currentPage, setCurrentPage]=useState(1)
     const [pokemonsPerPage, setpokemonsPerPage]=useState(12)
-    const indexOfLastVideogame=currentPage * pokemonsPerPage
-    const indexOfFirstVideogame=indexOfLastVideogame - pokemonsPerPage
-    const currentPokemons= allPokemons.slice(indexOfFirstVideogame, indexOfLastVideogame);
+    const indexOfLastPokemon=currentPage * pokemonsPerPage
+    const indexOfFirstPokemon=indexOfLastPokemon - pokemonsPerPage
+    const currentPokemons= allPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
     
     const paginado =(pageNumber)=>{
         setCurrentPage(pageNumber)
@@ -40,6 +40,36 @@ export default function Home(){
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`)
     };
+    const handleSortDefense =(e)=>{
+        e.preventDefault();
+        dispatch(orderByDefense(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    };
+    const handleSortLife =(e)=>{
+        e.preventDefault();
+        dispatch(orderByLife(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    };
+    const handleSortWeight =(e)=>{
+        e.preventDefault();
+        dispatch(orderByWeight(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    };
+    const handleSortHeight =(e)=>{
+        e.preventDefault();
+        dispatch(orderByHeight(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    };
+    const handleSortSpeed =(e)=>{
+        e.preventDefault();
+        dispatch(orderBySpeed(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
+    };
     const handleFilterTypes=(e)=>{
         e.preventDefault();
         dispatch(filterPokemonsByTypes(e.target.value))
@@ -59,16 +89,43 @@ export default function Home(){
         <div>
         <button className={style.button2} onClick={e=>{handleClick(e)}}>Clear filters</button>
         </div>
-        <div  >
+        <div >
+        <SearchBar/>
+        </div>
+        <div >
         <select onChange={e=>handleSort(e)} className={style.order}>
             <option>---</option>
             <option value="asc" >A-Z</option>
             <option value="desc">Z-A</option>
         </select>
+        <select onChange={e=>handleSortLife(e)} className={style.order}>
+            <option>---</option>
+            <option value="asc life" >-life</option>
+            <option value="desc life">+life</option>
+        </select>
+        </div>
+        <div>
         <select onChange={e=>handleSortAttack(e)} className={style.order}>
             <option>---</option>
             <option value="asc attack">-Attack</option>
             <option value="desc attack">+ Attack</option>
+        </select>
+        <select onChange={e=>handleSortDefense(e)} className={style.order}>
+            <option>---</option>
+            <option value="asc defense">-Defense</option>
+            <option value="desc defense">+ Defense</option>
+        </select>
+        </div>
+        <div>
+        <select onChange={e=>handleSortWeight(e)} className={style.order}>
+            <option>---</option>
+            <option value="asc weight">-Weight</option>
+            <option value="desc weight">+ weight</option>
+        </select>
+        <select onChange={e=>handleSortHeight(e)} className={style.order}>
+            <option>---</option>
+            <option value="asc height">-height</option>
+            <option value="desc height">+ height</option>
         </select>
         </div>
         <div >
@@ -101,8 +158,12 @@ export default function Home(){
             <option value="shadow">shadow</option>
         </select>
         </div>
-        <div >
-        <SearchBar/>
+        <div>
+        <select onChange={e=>handleSortSpeed(e)} className={style.order}>
+            <option>---</option>
+            <option value="asc speed">-Speed</option>
+            <option value="desc speed">+ Speed</option>
+        </select>
         </div>
         <div>
             <img className={style.gif} src="https://www.pkparaiso.com/imagenes/espada_escudo/sprites/animados-gigante/lucario.gif"
@@ -117,6 +178,7 @@ export default function Home(){
         <Paginacion pokemonsPerPage={pokemonsPerPage}
         allPokemons={allPokemons.length}
         paginado ={paginado}
+        currentPage={currentPage}
         /> 
         </div> 
         <div className={style.columnsR}>

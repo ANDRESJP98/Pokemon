@@ -102,12 +102,12 @@ export default function CreatePokemon(){
                 )}
                 <div className={style.position} >
                 <label className={style.text2}>Life</label>
-                <input className={style.bar} type='range' min="1" max="250" value={input.life} name='life' onChange={(e)=>handleChange(e)}></input>
+                <input className={style.bar} type='range' min="1" max="255" value={input.life} name='life' onChange={(e)=>handleChange(e)}></input>
                 <span>{input.life}</span>
                 </div>
                 <div className={style.position} >
                 <label className={style.text2}>Attack</label>
-                <input className={style.bar} type='range' min="1" max="250" value={input.attack} name='attack' onChange={(e)=>handleChange(e)}></input>
+                <input className={style.bar} type='range' min="1" max="200" value={input.attack} name='attack' onChange={(e)=>handleChange(e)}></input>
                 <span>{input.attack}</span>
                 </div>
                 <div className={style.position} >
@@ -117,17 +117,17 @@ export default function CreatePokemon(){
                 </div>
                 <div className={style.position} >
                 <label className={style.text2}>Speed</label>
-                <input className={style.bar} type='range'  min="1" max="250" value={input.speed} name='speed' onChange={(e)=>handleChange(e)}></input>
+                <input className={style.bar} type='range'  min="1" max="200" value={input.speed} name='speed' onChange={(e)=>handleChange(e)}></input>
                 <span>{input.speed}</span>
                 </div>
                 <div className={style.position} >
                 <label className={style.text2}>Height</label>
-                <input className={style.bar} type='range'  min="1" max="250" value={input.height} name='height' onChange={(e)=>handleChange(e)}></input>
+                <input className={style.bar} type='range'  min="1" max="1000" value={input.height} name='height' onChange={(e)=>handleChange(e)}></input>
                 <span>{input.height}</span>
                 </div>
                 <div className={style.position} >
                 <label className={style.text2} >Weight</label>
-                <input className={style.bar} type='range'  min="1" max="1500" value={input.weight} name='weight' onChange={(e)=>handleChange(e)}></input>
+                <input className={style.bar} type='range'  min="1" max="10000" value={input.weight} name='weight' onChange={(e)=>handleChange(e)}></input>
                 <span>{input.weight}</span>
                 </div>
                 <div className={style.position} >

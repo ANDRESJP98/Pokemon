@@ -14,7 +14,7 @@ const getPokemonsHandler =async (req,res)=>{
 }
 }
 const getPokemonsIdHandler = async (req,res)=>{
-    const id=req.params.id;
+    const {id}=req.params;
     const pokemons= await getAllpokemons();
     if(id){
         const pokemonId= await pokemons.filter(elem=>elem.id==id)
