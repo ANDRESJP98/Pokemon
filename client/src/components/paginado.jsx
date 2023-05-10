@@ -22,12 +22,14 @@ export default function Paginacion ({pokemonsPerPage, paginado, allPokemons, cur
                     <li className={`${style.pageItem} ${number === currentPage ? style.active : ""}`} key={number}>
                         <a className={style.pageLink} onClick={()=>paginado(number)}>{number}</a>
                     </li>
+                    
                 ))}
                 <li className={style.pageItem}>
                     <a className={style.pageLink} onClick={()=>paginado(nextPage)}>{">"}</a>
                 </li>
             </ul>
         </nav>
+
         </div>
     )
 }

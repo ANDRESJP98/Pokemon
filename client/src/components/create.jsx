@@ -61,6 +61,10 @@ export default function CreatePokemon(){
     }
     const handleSubmit=(e)=>{
         e.preventDefault()
+        if (!input.name || !input.image || input.type.length < 2) {
+            alert("Please, put a name, an image or aleast 2 types to create the pokemon.");
+            return;
+          }
         dispatch(postPokemons(input))
         alert("Pokemon created")
         setInput({

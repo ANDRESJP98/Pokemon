@@ -9,6 +9,7 @@ module.exports = (sequelize) => {
       defaultValue:DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
+      unique: true
     },
     name: {
       type: DataTypes.STRING,
@@ -44,12 +45,12 @@ module.exports = (sequelize) => {
     height: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue:1
+      defaultValue:5
     },
     weight: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue:1
+      defaultValue:5
     },
     created:{
       type:DataTypes.BOOLEAN,

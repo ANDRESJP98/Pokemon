@@ -17,6 +17,9 @@
   width: 40px;
   background-color:black;
   }
+  .pageItem.active {
+    background-color:#f71212;
+  }
   .pageItem:hover {
     background-color: rgb(219, 219, 219);
   }
@@ -27,7 +30,7 @@
     color:white;
     text-decoration: none;
   }
-  
+
   .pageLink:hover {
     color:white;
   }
