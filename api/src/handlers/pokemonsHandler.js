@@ -24,13 +24,9 @@ const getPokemonsIdHandler = async (req,res)=>{
     }
 }
 const createPokemonsHandler= async (req,res)=>{
-    const {name, image, life, 
-        attack, defense, speed, height, weight, created, type}=req.body;
-    const existingPokemon = await Pokemon.findOne({ where: { name } });
-  if (existingPokemon) {
-    return res.status(400).json({ error: "Ya existe un pokemon con ese nombre" });
-  }
     try {
+        const {name, image, life, 
+            attack, defense, speed, height, weight, created, type}=req.body;
         const newPokemon = await createPokemon(name, image, life, 
             attack, defense, speed, height, weight, created);
        const newType= await Type.findAll({

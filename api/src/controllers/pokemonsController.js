@@ -8,7 +8,7 @@ const createPokemon = async (name, image, life,
               
 const getAllpokemons = async ()=>{
     try {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1269');
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=500');
         const pokemons = response.data.results;
         const pokemonData = await Promise.all(pokemons.map(async (pokemon) => {
           const res = await axios.get(pokemon.url);
