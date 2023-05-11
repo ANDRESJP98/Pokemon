@@ -10,7 +10,7 @@ import style from './home.module.css'
 export default function Home(){
     const dispatch =useDispatch();
     const allPokemons = useSelector(state=>state.pokemons)
-    const [order,setOrden]=useState('')
+    const [orden,setOrden]=useState('')
     const [currentPage, setCurrentPage]=useState(1)
     const [pokemonsPerPage, setpokemonsPerPage]=useState(12)
     const indexOfLastPokemon=currentPage * pokemonsPerPage

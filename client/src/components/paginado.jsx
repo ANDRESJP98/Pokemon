@@ -7,10 +7,11 @@ export default function Paginacion ({pokemonsPerPage, paginado, allPokemons, cur
         pageNumbers.push(i+1)
     }
     const maxPages = 10;
-    const lastPage = Math.min(currentPage + Math.floor(maxPages / 2), pageNumbers.length);
-    const firstPage = Math.max(lastPage - maxPages + 1, 1);
-    const nextPage = currentPage < pageNumbers.length ? currentPage + 10 : currentPage;
-    const prevPage = currentPage > 1 ? currentPage - 10 : currentPage;
+    const currentBlock = Math.ceil(currentPage / maxPages);
+    const firstPage = (currentBlock - 1) * maxPages;
+    const lastPage = Math.min(currentBlock * maxPages, pageNumbers.length);
+    const nextPage = currentBlock < Math.ceil(pageNumbers.length / maxPages) ? lastPage + 1 : currentPage;
+    const prevPage = currentBlock > 1 ? firstPage - 1 : currentPage;
     return (
         <div>
         <nav>
@@ -18,7 +19,7 @@ export default function Paginacion ({pokemonsPerPage, paginado, allPokemons, cur
                 <li className={style.pageItem}>
                     <a className={style.pageLink} onClick={()=>paginado(prevPage)}>{"<"}</a>
                 </li>
-                {pageNumbers.slice(firstPage - 1, lastPage).map(number=>(
+                {pageNumbers.slice(firstPage, lastPage).map(number=>(
                     <li className={`${style.pageItem} ${number === currentPage ? style.active : ""}`} key={number}>
                         <a className={style.pageLink} onClick={()=>paginado(number)}>{number}</a>
                     </li>
