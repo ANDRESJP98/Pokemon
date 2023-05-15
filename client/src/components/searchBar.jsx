@@ -7,6 +7,7 @@ import { getNamePokemons} from '../actions/actions';
 export default function SearchBar(){
     const dispatch=useDispatch();
     const [name, setName]=useState("")
+    const [loading, setLoading] = useState(true);
     
     function handleInputChange(e){
         e.preventDefault()
@@ -14,8 +15,10 @@ export default function SearchBar(){
 
     }
     function handleSubmit(e){
-        e.preventDefault()
+        e.preventDefault();
+        setLoading(true);
         dispatch(getNamePokemons(name))
+        .then(() => setLoading(false));
     }
     return (
         <div >

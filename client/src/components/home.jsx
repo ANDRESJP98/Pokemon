@@ -4,7 +4,7 @@ import { getPokemons, orderByWeight,orderByHeight, orderBySpeed, orderByLife, or
 import Card from "./Card";
 import Paginacion from "./paginado";
 import { Link } from "react-router-dom";
-import SearchBar from "./searchBar";
+import { getNamePokemons } from "../actions/actions";
 import style from './home.module.css'
 
 export default function Home(){
@@ -13,20 +13,25 @@ export default function Home(){
     const [orden,setOrden]=useState('')
     const [currentPage, setCurrentPage]=useState(1)
     const [pokemonsPerPage, setpokemonsPerPage]=useState(12)
+    const [loading, setLoading] = useState(true);
     const indexOfLastPokemon=currentPage * pokemonsPerPage
     const indexOfFirstPokemon=indexOfLastPokemon - pokemonsPerPage
     const currentPokemons= allPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
-    
+    const [name, setName]=useState("")
     const paginado =(pageNumber)=>{
         setCurrentPage(pageNumber)
     }
     useEffect(()=>{
-        dispatch(getPokemons());
+        setLoading(true);
+        dispatch(getPokemons())
+        .then(() => setLoading(false));
     },[dispatch])
 
     const handleClick =(e)=>{
         e.preventDefault();
+        setLoading(true);
         dispatch(getPokemons())
+        .then(() => setLoading(false));
     };
     const handleSort =(e)=>{
         e.preventDefault();
@@ -77,7 +82,18 @@ export default function Home(){
     const handleFilterCreated=(e)=>{
         e.preventDefault();
         dispatch(filterCreated(e.target.value))
-    };
+    };    
+    function handleInputChange(e){
+        e.preventDefault()
+        setName(e.target.value)
+
+    }
+    function handleSubmit(e){
+        e.preventDefault();
+        setLoading(true);
+        dispatch(getNamePokemons(name))
+        .then(() => setLoading(false));
+    }
     
     return (
         <div className={style.container1}>
@@ -90,7 +106,8 @@ export default function Home(){
         <button className={style.button2} onClick={e=>{handleClick(e)}}>Clear filters</button>
         </div>
         <div >
-        <SearchBar/>
+        <input type="text" placeholder='Search...' onChange={(e)=>handleInputChange(e)}></input>
+            <button  type="submit" onClick={(e)=>handleSubmit(e)} >Search</button>
         </div>
         <div >
         <select onChange={e=>handleSort(e)} className={style.order}>
@@ -183,18 +200,20 @@ export default function Home(){
         </div> 
         <div className={style.columnsR}>
             {
-            currentPokemons.length>0?
+                 loading ?
+                <div className={style.img2}>
+                <img  src="https://media.tenor.com/74l5y1hUdtwAAAAj/pokemon.gif"
+                width="250px" height="250px" />
+                <p>Loading...</p>
+               </div>
+               :
             currentPokemons.map((pok)=>{
                 return (
                 <div className={style.cardContainer} >
                 <Card name={pok.name} Types={pok.Types} image={pok.img?pok.img:pok.image} id={pok.id} key={pok.id}/> 
                 </div>
                 )
-            }):<div className={style.img2}>
-            <img  src="https://media.tenor.com/74l5y1hUdtwAAAAj/pokemon.gif"
-            width="250px" height="250px" />
-            <p>Loading...</p>
-           </div>
+            })
             }
         </div>
         </div>
