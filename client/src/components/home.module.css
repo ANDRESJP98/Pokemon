@@ -115,9 +115,22 @@ top:30px; right: 100px;
 
 .img2{
   position: relative;
-  top:250px;right: 20px;
+  top:250px;right: 10px;
   text-align: center;
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size:larger;
   font-weight: 700;
+}
+.img3{
+  position: relative;
+  top:250px;left: 10px;
+ 
+}
+.errorMsg{
+  position: relative;
+  top:210px;left: 10px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size:larger;
+  font-weight: 800;
+
 }
