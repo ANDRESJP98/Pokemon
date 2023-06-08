@@ -40,8 +40,8 @@ export default function Home(){
       setCurrentPage(1); 
       setName(""); 
       setSearchError(false); 
-      setSelectedSort(""); // Restablecer el filtro de ordenamiento
-      setSelectedFilterType("All"); // Restablecer el filtro de tipos
+      setSelectedSort(""); 
+      setSelectedFilterType("All"); 
       setSelectedFilterCreated("All"); 
     });
 }
